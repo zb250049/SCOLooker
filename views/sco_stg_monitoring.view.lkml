@@ -476,6 +476,14 @@ view: sco_stg_monitoring {
   dimension: transaction_with_security_or_non_security_assist_event_avg____ {
     type: number
     sql: ${TABLE}.Transaction_with_security_or_non_security_assist_event_Avg____ ;;
+    hidden: yes
+  }
+
+  measure: transaction_with_security_or_non_security_assist_event_avg{
+    type: average
+    sql: ${transaction_with_security_or_non_security_assist_event_avg____} ;;
+    value_format_name: decimal_0
+    hidden: no
   }
 
   dimension: transaction_with_security_or_non_security_assist_event_sd____ {
