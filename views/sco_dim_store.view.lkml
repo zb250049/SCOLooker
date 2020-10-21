@@ -3,15 +3,17 @@ view: sco_dim_store {
     ;;
   label: "Stores"
 
+
+  dimension: ZipCode {
+    map_layer_name: us_zipcode_tabulation_areas
+    sql: ${TABLE}.ZipCode ;;
+  }
   dimension: store {
     type: string
     sql: ${TABLE}.Store ;;
   }
 
-  dimension: ZipCode {
-   map_layer_name: us_zipcode_tabulation_areas
-    sql: ${TABLE}.ZipCode ;;
-  }
+
 
 
   measure: count {
