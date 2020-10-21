@@ -5,7 +5,7 @@ view: sco_dim_store {
 
 
   dimension: ZipCode {
-    map_layer_name: us_zipcode_tabulation_areas
+   type: zipcode
     sql: ${TABLE}.ZipCode ;;
   }
   dimension: store {
