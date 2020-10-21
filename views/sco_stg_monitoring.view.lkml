@@ -48,8 +48,15 @@ view: sco_stg_monitoring {
     sql: ${complete_transaction_count} ;;
     value_format_name: decimal_0
     hidden:no
+    drill_fields: [detail*]
+    link: {
+      label: "Explore Top 15 Results"
+      url: "{{ link }}&limit=15"
+    }
   }
-
+  set: detail {
+    fields: [store___lane,total_complete_transaction_count]
+  }
   dimension: complete_transactions______lane___day_ {
     type: number
     sql: ${TABLE}.Complete_Transactions______lane___day_ ;;
