@@ -9,9 +9,10 @@ view: sco_dim_store {
   }
 
   dimension: ZipCode {
-    type: string
+   map_layer_name: us_zipcode_tabulation_areas
     sql: ${TABLE}.ZipCode ;;
   }
+
 
   measure: count {
     type: count
