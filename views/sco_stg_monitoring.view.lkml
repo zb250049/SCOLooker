@@ -484,7 +484,16 @@ view: sco_stg_monitoring {
     sql: ${transaction_with_security_or_non_security_assist_event_avg____} ;;
     value_format_name: decimal_0
     hidden: no
+    drill_fields: [detailAssis*]
+    link: {
+      label: "Explore Top 15 Results"
+      url: "{{ link }}&limit=15"
+    }
   }
+  set: detailAssis {
+    fields: [store___lane,transaction_with_security_or_non_security_assist_event_avg____]
+  }
+
 
   dimension: transaction_with_security_or_non_security_assist_event_sd____ {
     type: number
