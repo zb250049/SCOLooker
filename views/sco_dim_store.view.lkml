@@ -8,6 +8,11 @@ view: sco_dim_store {
     sql: ${TABLE}.Store ;;
   }
 
+  dimension: ZipCode {
+    type: string
+    sql: ${TABLE}.ZipCode ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
