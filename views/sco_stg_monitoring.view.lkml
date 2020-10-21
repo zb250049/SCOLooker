@@ -482,7 +482,7 @@ view: sco_stg_monitoring {
   measure: transaction_with_security_or_non_security_assist_event_avg{
     type: average
     sql: ${transaction_with_security_or_non_security_assist_event_avg____} ;;
-    value_format_name: decimal_0
+    value_format_name: percent_0
     hidden: no
     drill_fields: [detailAssis*]
     link: {
