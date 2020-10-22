@@ -491,7 +491,7 @@ view: sco_stg_monitoring {
     }
   }
   dimension: status {
-    sql: ${TABLE}.status ;;
+    sql: ${TABLE}.transaction_with_security_or_non_security_assist_event_avg____ ;;
     html:
       {% if transaction_with_security_or_non_security_assist_event_avg____<11 %}
          <p><img src="http://findicons.com/files/icons/573/must_have/48/check.png" height=20 width=20>{{ rendered_value }}</p>
