@@ -490,8 +490,19 @@ view: sco_stg_monitoring {
       url: "{{ link }}&limit=15"
     }
   }
+  dimension: status {
+    sql: ${TABLE}.status ;;
+    html:
+      {% if transaction_with_security_or_non_security_assist_event_avg____<11 %}
+         <p><img src="http://findicons.com/files/icons/573/must_have/48/check.png" height=20 width=20>{{ rendered_value }}</p>
+      {% else %}
+        <p><img src="http://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" height=20 width=20>{{ rendered_value }}</p>
+      {% endif %}
+;;
+  }
+
   set: detailAssis {
-    fields: [store___lane, transaction_with_security_or_non_security_assist_event]
+    fields: [store___lane, transaction_with_security_or_non_security_assist_event,status]
   }
 
 
