@@ -479,6 +479,8 @@ view: sco_stg_monitoring {
     hidden: yes
   }
 
+
+
   measure: transaction_with_security_or_non_security_assist_event{
     type: sum
     sql: ${transaction_with_security_or_non_security_assist_event_avg____}*complete_transaction_count/100 ;;
@@ -493,13 +495,14 @@ view: sco_stg_monitoring {
 
 
 
+
   dimension: status {
     sql: ${transaction_with_security_or_non_security_assist_event_avg____} ;;
     html:
-      {% if  Transaction_with_security_or_non_security_assist_event_Avg____<20 %}
-         <p><img src="http://findicons.com/files/icons/573/must_have/48/check.png" height=20 width=20>{{ rendered_value }}</p>
+      {% if  {{value}} >20 %}
+         <p><img src="http://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" height=20 width=20>{{ rendered_value }}</p>
       {% else %}
-        <p><img src="http://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" height=20 width=20>{{ rendered_value }}</p>
+       <p><img src="http://findicons.com/files/icons/573/must_have/48/check.png" height=20 width=20>{{ rendered_value }}</p>
       {% endif %}
 ;;
   }
