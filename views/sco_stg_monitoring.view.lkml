@@ -480,7 +480,7 @@ view: sco_stg_monitoring {
   }
 
   measure: transaction_with_security_or_non_security_assist_event{
-    type: average
+    type: sum
     sql: ${transaction_with_security_or_non_security_assist_event_avg____}*complete_transaction_count/100 ;;
     value_format_name: decimal_0
     hidden: no
