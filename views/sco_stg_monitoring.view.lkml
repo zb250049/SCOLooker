@@ -481,8 +481,8 @@ view: sco_stg_monitoring {
 
   measure: transaction_with_security_or_non_security_assist_event{
     type: average
-    sql: ${transaction_with_security_or_non_security_assist_event_avg____}/100*total_complete_transaction_count ;;
-    value_format_name: percent_0
+    sql: ${transaction_with_security_or_non_security_assist_event_avg____}/100*complete_transaction_count ;;
+    value_format_name: decimal_0
     hidden: no
     drill_fields: [detailAssis*]
     link: {
@@ -491,7 +491,7 @@ view: sco_stg_monitoring {
     }
   }
   set: detailAssis {
-    fields: [store___lane,transaction_with_security_or_non_security_assist_event_avg____]
+    fields: [store___lane, transaction_with_security_or_non_security_assist_event_avg____]
   }
 
 
