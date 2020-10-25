@@ -340,8 +340,14 @@ view: sco_stg_monitoring {
   dimension: time_available__hours_per_day_ {
     type: number
     sql: ${TABLE}.Time_Available__hours_per_day_ ;;
+    hidden: yes
   }
 
+measure: total_time_available__hours_per_day_ {
+  type:sum
+  sql: ${time_available__hours_per_day_} ;;
+  value_format_name: decimal_0
+}
   dimension: time_closed__hours_per_day_ {
     type: number
     sql: ${TABLE}.Time_Closed__hours_per_day_ ;;
