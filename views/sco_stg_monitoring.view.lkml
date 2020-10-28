@@ -532,8 +532,8 @@ measure: total_time_available__hours_per_day_ {
 
 
   measure: transaction_with_security_or_non_security_assist_event{
-    type: sum
-    sql: ${transaction_with_security_or_non_security_assist_event_avg____}*complete_transaction_count/100 ;;
+    type:sum
+    sql: ${transaction_with_security_or_non_security_assist_event_avg____}/100 * complete_transaction_count;;
     value_format_name: decimal_0
     hidden: no
     drill_fields: [detailAssis*]
