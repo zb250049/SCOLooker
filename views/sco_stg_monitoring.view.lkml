@@ -538,8 +538,8 @@ measure: total_time_available__hours_per_day_ {
     hidden: no
     drill_fields: [detailAssis*]
     link: {
-      label: "Explore Top 15 transaction with security or non security"
-      url: "{{ link }}&limit=15"
+      label: "Explore Top 150 transaction with security or non security"
+      url: "{{ link }}&limit=150"
     }
   }
 
