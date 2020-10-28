@@ -28,3 +28,7 @@ explore: sco_stg_monitoring {
   }
 
 }
+
+explore: sco_state {
+  label: "state"
+}
