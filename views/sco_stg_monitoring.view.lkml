@@ -558,7 +558,7 @@ measure: total_time_available__hours_per_day_ {
   }
 
   set: detailAssis {
-    fields: [store___lane,complete_transaction_count, transaction_with_security_or_non_security_assist_event,status]
+    fields: [store___lane,date_week_week,complete_transaction_count, transaction_with_security_or_non_security_assist_event,status]
   }
 
 
