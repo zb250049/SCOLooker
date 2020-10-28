@@ -15,6 +15,15 @@ view: sco_stg_monitoring {
   dimension: adk_version {
     type: string
     sql: ${TABLE}.ADK_Version ;;
+    drill_fields:[detail_TranAkFailedVsComleted*]
+    link: {
+      label: "Explore Top 20 Store Lanes"
+      url: "{{ link }}&limit=20"
+    }
+  }
+
+  set: detail_TranAkFailedVsComleted {
+    fields: [,store___lane,total_complete_transaction_count,failed_transactions_per_1000_complete_transactions,total_failed_transactions_count_sum]
   }
 
   dimension: avg_abnormal_restarts______lane___week_ {
@@ -96,6 +105,15 @@ view: sco_stg_monitoring {
     type: number
     sql: ${TABLE}.Failed_Transactions_per_1000_Complete_Transactions ;;
   }
+
+  measure: total_failed_transactions_per_1000_complete_transactions {
+    type: average
+    sql: ${failed_transactions_per_1000_complete_transactions} ;;
+    value_format_name: decimal_2
+    hidden: no
+  }
+
+
 
   dimension: first_security___unexpected_decrease_avg____normalized_to_items_scanned_ {
     type: number
@@ -387,6 +405,13 @@ measure: total_time_available__hours_per_day_ {
   dimension: total_failed_transactions_count {
     type: number
     sql: ${TABLE}.Total_Failed_Transactions_Count ;;
+  }
+
+  measure: total_failed_transactions_count_sum {
+    type: sum
+    sql: ${transaction_time_avg__sec_} ;;
+    value_format_name: decimal_0
+    hidden: no
   }
 
   dimension: total_security___unexpected_decrease_avg____normalized_to_items_scanned_ {
