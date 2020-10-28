@@ -436,6 +436,15 @@ measure: total_time_available__hours_per_day_ {
     sql: ${transaction_time_avg__sec_} ;;
     value_format_name: decimal_0
     hidden: no
+    drill_fields:[detail_Tranavg*]
+    link: {
+      label: "Explore Top 300 Store Lanes"
+      url: "{{ link }}&limit=300"
+    }
+  }
+
+  set: detail_Tranavg {
+    fields: [store,store___lane,total_transaction_time_avg__sec,total_complete_transaction_count]
   }
 
 
