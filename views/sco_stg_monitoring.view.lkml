@@ -316,6 +316,10 @@ view: sco_stg_monitoring {
     type: string
     sql: ${TABLE}.Store___Lane ;;
   }
+  measure:Store_lane_Count{type: count_distinct
+    sql: ${store___lane} ;;
+    value_format_name: decimal_0
+  }
 
   dimension: tb_integration_version {
     type: string
