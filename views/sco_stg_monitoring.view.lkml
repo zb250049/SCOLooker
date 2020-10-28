@@ -15,15 +15,11 @@ view: sco_stg_monitoring {
   dimension: adk_version {
     type: string
     sql: ${TABLE}.ADK_Version ;;
-    drill_fields:[detail_TranAkFailedVsComleted*]
-    link: {
-      label: "Explore Top 20 Store Lanes"
-      url: "{{ link }}&limit=20"
-    }
+
   }
 
   set: detail_TranAkFailedVsComleted {
-    fields: [,store___lane,total_complete_transaction_count,failed_transactions_per_1000_complete_transactions,total_failed_transactions_count_sum]
+    fields: [store___lane, total_complete_transaction_count,failed_transactions_per_1000_complete_transactions,total_failed_transactions_count_sum]
   }
 
   dimension: avg_abnormal_restarts______lane___week_ {

@@ -5,7 +5,15 @@ view: sco_dim_store_lane {
   dimension: adk_version {
     type: string
     sql: ${TABLE}.ADK_Version ;;
+    drill_fields:[sco_stg_monitoring.detail_TranAkFailedVsComleted*]
+    link: {
+      label: "Explore Top 20 Store Lanes"
+      url: "{{ link }}&limit=20"
+    }
+    hidden: no
   }
+
+
 
   dimension: configuration {
     type: string
