@@ -142,10 +142,19 @@ view: sco_stg_monitoring {
     sql: ${TABLE}.Itemization_Time_per_item__sec_ ;;
   }
 
+measure: total_itemization_time_per_item__sec_  {
+  type: average
+  sql: ${itemization_time_per_item__sec_} ;;
+  value_format_name: decimal_2
+  hidden: no
+}
+
   dimension: itemization_time_sd_sec_ {
     type: number
     sql: ${TABLE}.Itemization_Time_SD_sec_ ;;
   }
+
+
 
   dimension: lane_closed_count {
     type: number
