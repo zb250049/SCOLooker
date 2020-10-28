@@ -438,8 +438,8 @@ measure: total_time_available__hours_per_day_ {
     hidden: no
     drill_fields:[detail_Tranavg*]
     link: {
-      label: "Explore Top 300 Store Lanes"
-      url: "{{ link }}&limit=300"
+      label: "Explore Top 20 Store Lanes"
+      url: "{{ link }}&limit=20"
     }
   }
 
