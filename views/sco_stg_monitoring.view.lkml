@@ -537,7 +537,7 @@ measure: total_time_available__hours_per_day_ {
   }
 
 
-  measure: transaction_with_security_or_non_security_assist_event{
+  measure: Avg_transaction_with_security_or_non_security_assist_event{
     type:average
     sql: ${Transaction_With_Assist_With_or_WithOut_security_count};;
     value_format_name: decimal_0
@@ -571,7 +571,7 @@ measure: total_time_available__hours_per_day_ {
   }
 
   set: detailAssis {
-    fields: [adk_version, store___lane,date_week_week,avg_complete_transaction_count, transaction_with_security_or_non_security_assist_event,status]
+    fields: [adk_version, store___lane,date_week_week,avg_complete_transaction_count, Avg_transaction_with_security_or_non_security_assist_event,status]
   }
 
 
