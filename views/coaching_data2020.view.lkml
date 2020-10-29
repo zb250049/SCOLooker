@@ -15,6 +15,11 @@ view: coaching_data2020 {
   dimension: _coaching_state {
     type: string
     sql: ${TABLE}._Coaching_State ;;
+    drill_fields:[overduweDetailComleted*]
+    link: {
+      label: "Explore Top 20 Storeד"
+      url: "{{ link }}&limit=20"
+    }
   }
 
   dimension: cashier {
@@ -70,13 +75,27 @@ view: coaching_data2020 {
   dimension: overdue_state {
     type: string
     sql: ${TABLE}.Overdue_State ;;
+    drill_fields:[overduweDetailComleted*]
+    link: {
+      label: "Explore Top 20 Storeד"
+      url: "{{ link }}&limit=20"
   }
+}
+
+    set: overduweDetailComleted {
+      fields: [store,resolution,overdue_state]
+    }
+
 
   dimension: resolution {
     type: string
     sql: ${TABLE}.resolution ;;
+    drill_fields:[overduweDetailComleted*]
+    link: {
+      label: "Explore Top 20 Storeד"
+      url: "{{ link }}&limit=20"
   }
-
+}
   dimension_group: scheduled {
     type: time
     timeframes: [
