@@ -83,7 +83,7 @@ view: coaching_data2020 {
 }
 
     set: overduweDetailComleted {
-      fields: [store,resolution,overdue_state]
+      fields: [store,resolution,overdue_state,_coaching_state]
     }
 
 
