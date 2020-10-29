@@ -530,10 +530,16 @@ measure: total_time_available__hours_per_day_ {
   }
 
 
+  dimension: Transaction_With_Assist_With_or_WithOut_security_count {
+    type: number
+    sql: ${TABLE}.Transaction_With_Assist_With_or_WithOut_security_count ;;
+    hidden: yes
+  }
+
 
   measure: transaction_with_security_or_non_security_assist_event{
     type:sum
-    sql: ${transaction_with_security_or_non_security_assist_event_avg____}/100 * complete_transaction_count;;
+    sql: ${Transaction_With_Assist_With_or_WithOut_security_count};;
     value_format_name: decimal_0
     hidden: no
     drill_fields: [detailAssis*]
