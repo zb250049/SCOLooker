@@ -11,6 +11,12 @@ view: sco_dim_store {
   dimension: store {
     type: string
     sql: ${TABLE}.Store ;;
+    drill_fields:[sco_stg_monitoring.detail_TranAkFailedVsComleted*]
+    link: {
+      label: "Explore Top 20 Store Lanes"
+      url: "{{ link }}&limit=20"
+    }
+    hidden: no
   }
 
 
