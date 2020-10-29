@@ -32,3 +32,7 @@ explore: sco_stg_monitoring {
 explore: sco_state {
   label: "state"
 }
+
+explore: coaching_data2020 {
+  label: "Coaching Data 2020"
+}
