@@ -538,18 +538,25 @@ measure: total_time_available__hours_per_day_ {
 
 
   measure: transaction_with_security_or_non_security_assist_event{
-    type:sum
+    type:average
     sql: ${Transaction_With_Assist_With_or_WithOut_security_count};;
     value_format_name: decimal_0
     hidden: no
     drill_fields: [detailAssis*]
     link: {
-      label: "Explore Top 150 transaction with security or non security"
-      url: "{{ link }}&limit=150"
+      label: "Explore Top 20 transaction with security or non security"
+      url: "{{ link }}&limit=20"
     }
   }
 
 
+  measure: avg_complete_transaction_count{
+    type:average
+    sql: ${complete_transaction_count};;
+    value_format_name: decimal_0
+    hidden: no
+
+  }
 
 
   dimension: status {
@@ -564,7 +571,7 @@ measure: total_time_available__hours_per_day_ {
   }
 
   set: detailAssis {
-    fields: [store___lane,date_week_week,complete_transaction_count, transaction_with_security_or_non_security_assist_event,status]
+    fields: [adk_version, store___lane,date_week_week,avg_complete_transaction_count, transaction_with_security_or_non_security_assist_event,status]
   }
 
 
