@@ -3,6 +3,9 @@ view: sco_dimweeks {
     ;;
   label: "Time"
 
+
+
+
   dimension_group: date_week {
     type: time
     timeframes: [
@@ -17,6 +20,7 @@ view: sco_dimweeks {
     datatype: date
     sql: ${TABLE}.DateWeek ;;
   }
+
 
   measure: count {
     type: count

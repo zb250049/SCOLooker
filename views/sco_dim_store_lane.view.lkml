@@ -33,6 +33,11 @@ view: sco_dim_store_lane {
   dimension: processor_name {
     type: string
     sql: ${TABLE}.Processor_Name ;;
+    drill_fields:[sco_fact_performance.detailPerformance*]
+    link: {
+      label: "Explore Top 50 Store Lanes performance"
+      url: "{{ link }}&limit=50"
+    }
   }
 
   dimension: store {

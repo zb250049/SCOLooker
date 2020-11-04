@@ -7,7 +7,14 @@ view: sco_dim_store {
   dimension: ZipCode {
    type: zipcode
     sql: ${TABLE}.ZipCode ;;
+
+    drill_fields:[sco_fact_performance.detailPerformance*]
+    link: {
+      label: "Explore Top 50 Store Lanes performance"
+      url: "{{ link }}&limit=50"
+    }
   }
+
   dimension: store {
     type: string
     sql: ${TABLE}.Store ;;
@@ -16,6 +23,7 @@ view: sco_dim_store {
       label: "Explore Top 20 Store Lanes"
       url: "{{ link }}&limit=20"
     }
+
     hidden: no
   }
 

@@ -27,6 +27,7 @@ explore: sco_stg_monitoring {
     sql_on: ${sco_dim_store.store} = ${sco_stg_monitoring.store} ;;
   }
 
+
 }
 
 explore: sco_state {
@@ -35,4 +36,30 @@ explore: sco_state {
 
 explore: coaching_data2020 {
   label: "Coaching Data 2020"
+}
+
+
+explore: sco_fact_performance{
+  label:"Performance"
+  join: sco_dimweeks {
+    relationship: many_to_one
+    sql_on: ${sco_dimweeks.date_week_date} = ${sco_fact_performance.date_date} ;;
+  }
+
+  join: sco_dim_store_lane {
+    relationship: many_to_one
+    sql_on: ${sco_dim_store_lane.store__lane} = ${sco_fact_performance.lane} ;;
+
+  }
+
+  join: sco_dim_store {
+    relationship: many_to_one
+    sql_on: ${sco_dim_store.store} = ${sco_fact_performance.store} ;;
+  }
+
+  join: sco_dimtime{
+    relationship: many_to_one
+    sql_on: ${sco_dimtime.hour_key} = ${sco_fact_performance.hour_key} ;;
+  }
+
 }
