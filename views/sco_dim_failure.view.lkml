@@ -5,6 +5,11 @@ view: sco_dim_failure {
   dimension: failure_code {
     type: number
     sql: ${TABLE}.Failure_Code ;;
+    drill_fields:[sco_fact_performance.detailPerformance*]
+    link: {
+      label: "Explore Top 50 Store Lanes performance"
+      url: "{{ link }}&limit=50"
+    }
   }
 
   dimension: failure_description {
