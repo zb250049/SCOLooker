@@ -1,7 +1,7 @@
 view: sco_fact_performance {
   sql_table_name: `com-loyalpro-global-dev.SCO_Poc.SCO_FactPerformance`
     ;;
-
+  label: "Performance"
   dimension: country {
     type: string
     map_layer_name: countries
@@ -74,6 +74,19 @@ view: sco_fact_performance {
     value_format_name: decimal_1
   }
 
+  dimension: failure_Code {
+    type: number
+    sql: ${TABLE}.failure_Code ;;
+  }
+
+
+  dimension: assistence_Code {
+    type: number
+    sql: ${TABLE}.assistence_Code ;;
+  }
+
+
+
 
   dimension_group: date {
     type: time
@@ -118,6 +131,42 @@ view: sco_fact_performance {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+
+
+  dimension: Itemization_Time_Avg__sec_ {
+    type: number
+    sql: ${TABLE}.Itemization_Time_Avg__sec_ ;;
+  }
+
+  measure: total_Itemization_Time_Avg__sec_ {
+    type: average
+  sql: ${Itemization_Time_Avg__sec_} ;;
+    value_format_name: decimal_1
+  }
+
+  dimension: Transaction_Time_Avg_sec_  {
+    type: number
+    sql: ${TABLE}.Transaction_Time_Avg_sec_  ;;
+  }
+
+  measure: total_Transaction_Time_Avg_sec_ {
+    type: average
+    sql: ${Transaction_Time_Avg_sec_} ;;
+    value_format_name: decimal_1
+  }
+
+
+  dimension: Number_of_Transactions  {
+    type: number
+    sql: ${TABLE}.Number_of_Transaction  ;;
+  }
+
+  measure: total_Number_of_Transactions {
+    type: sum
+    sql: ${Number_of_Transactions} ;;
+    value_format_name: decimal_1
   }
 
   set: detailPerformance {

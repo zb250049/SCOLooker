@@ -1,7 +1,7 @@
 view: sco_dimtime {
   sql_table_name: `com-loyalpro-global-dev.SCO_Poc.SCO_DIMTime`
     ;;
-
+label: "Time"
   dimension: hour_key {
     type: number
     sql: ${TABLE}.Hour_Key ;;

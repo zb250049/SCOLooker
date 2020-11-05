@@ -61,5 +61,13 @@ explore: sco_fact_performance{
     relationship: many_to_one
     sql_on: ${sco_dimtime.qtr_hour_key} = ${sco_fact_performance.hour_key} ;;
   }
+  join: sco_dim_failure{
+    relationship: many_to_one
+    sql_on: ${sco_dim_failure.failure_code} = ${sco_fact_performance.failure_Code} ;;
+    }
 
+  join: sco_dim_assistence{
+    relationship: many_to_one
+    sql_on: ${sco_dim_assistence.assistence_code} = ${sco_fact_performance.assistence_Code} ;;
+  }
 }
