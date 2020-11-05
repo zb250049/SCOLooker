@@ -59,7 +59,7 @@ explore: sco_fact_performance{
 
   join: sco_dimtime{
     relationship: many_to_one
-    sql_on: ${sco_dimtime.hour_key} = ${sco_fact_performance.hour_key} ;;
+    sql_on: ${sco_dimtime.qtr_hour_key} = ${sco_fact_performance.hour_key} ;;
   }
 
 }
