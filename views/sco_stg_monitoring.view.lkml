@@ -12,6 +12,12 @@ view: sco_stg_monitoring {
     sql: ${TABLE}.Abnormal_Restarts_per_1000_Transactions ;;
   }
 
+  measure: total_abnormal_Restarts_per_1000_Transactions {
+    type: average
+    sql: ${abnormal_restarts_per_1000_transactions} ;;
+    value_format_name: decimal_0
+  }
+
   dimension: adk_version {
     type: string
     sql: ${TABLE}.ADK_Version ;;
