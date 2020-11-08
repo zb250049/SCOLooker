@@ -13,6 +13,7 @@ view: sco_stg_monitoring {
   }
 
   measure: total_abnormal_Restarts_per_1000_Transactions {
+    label: "Avg Abnormal Restart Count Per 1000"
     type: average
     sql: ${abnormal_restarts_per_1000_transactions} ;;
     value_format_name: decimal_0
@@ -160,6 +161,7 @@ view: sco_stg_monitoring {
   }
 
 measure: total_itemization_time_per_item__sec_  {
+  label: "Avg time-Sec per Itemization"
   type: average
   sql: ${itemization_time_per_item__sec_} ;;
   value_format_name: decimal_2
@@ -637,6 +639,7 @@ measure: total_itemization_time_per_item__sec_  {
     hidden: no}
 
   measure:  total_transaction_size_avg__number_of_items_targetvssource  {
+    label: "Avg Qty of Items Per Sco Actual vs Targe "
     sql:  "95 %";;
     value_format_name: percent_0
     hidden: no
@@ -655,6 +658,7 @@ measure: total_itemization_time_per_item__sec_  {
 
   measure:  total_transaction_time_avg__sec_all_store  {
     type: average
+    label: "Avg Sec per Transaction All Lane"
     sql: ${TABLE}.avg_transaction_in_Store_Sec;;
     value_format_name: decimal_0
     hidden: no
@@ -666,6 +670,7 @@ measure: total_itemization_time_per_item__sec_  {
 }
 
   measure: total_transaction_time_avg__sec {
+    label: "Avg Sec per Transaction SCO"
     type: average
     sql: ${transaction_time_avg__sec_} ;;
     value_format_name: decimal_0
@@ -703,7 +708,7 @@ measure: total_itemization_time_per_item__sec_  {
 
   measure: total_time_available__hours_per_day_Target {
     type:average
-    sql: round(${time_available__hours_per_day_}/0.8) ;;
+    sql: round(${time_available__hours_per_day_}/0.95) ;;
     value_format_name: decimal_0
     drill_fields: [store,store___lane,date_week_date,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target,total_utilization_avg__hours_per_day_]
   }
