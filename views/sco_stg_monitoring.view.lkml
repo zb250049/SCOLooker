@@ -374,11 +374,7 @@ measure: total_itemization_time_per_item__sec_  {
     hidden: yes
   }
 
-measure: total_time_available__hours_per_day_ {
-  type:sum
-  sql: ${time_available__hours_per_day_} ;;
-  value_format_name: decimal_0
-}
+
   dimension: time_closed__hours_per_day_ {
     type: number
     sql: ${TABLE}.Time_Closed__hours_per_day_ ;;
@@ -408,7 +404,7 @@ measure: total_time_available__hours_per_day_ {
 
   measure: total_failed_transactions_count_sum {
     type: sum
-    sql: ${transaction_time_avg__sec_} ;;
+    sql: ${total_failed_transactions_count} ;;
     value_format_name: decimal_0
     hidden: no
   }
@@ -466,17 +462,8 @@ measure: total_time_available__hours_per_day_ {
     sql: ${TABLE}.Transaction_Time_Avg__sec_ ;;
   }
 
-  measure: total_transaction_time_avg__sec {
-    type: average
-    sql: ${transaction_time_avg__sec_} ;;
-    value_format_name: decimal_0
-    hidden: no
-    drill_fields:[detail_Tranavg*]
-    link: {
-      label: "Explore Top 20 Store Lanes"
-      url: "{{ link }}&limit=20"
-    }
-  }
+
+
 
   set: detail_Tranavg {
     fields: [store,store___lane,total_transaction_time_avg__sec,total_complete_transaction_count]
@@ -545,26 +532,10 @@ measure: total_time_available__hours_per_day_ {
   }
 
 
-  measure: Avg_transaction_with_security_or_non_security_assist_event{
-    type:average
-    sql: ${Transaction_With_Assist_With_or_WithOut_security_count};;
-    value_format_name: decimal_0
-    hidden: no
-    drill_fields: [detailAssis*]
-    link: {
-      label: "Explore Top 20 transaction with security or non security"
-      url: "{{ link }}&limit=20"
-    }
-  }
 
 
-  measure: avg_complete_transaction_count{
-    type:average
-    sql: ${complete_transaction_count};;
-    value_format_name: decimal_0
-    hidden: no
-    drill_fields: [store,store___lane]
-  }
+
+
 
 
   dimension: status {
@@ -638,6 +609,8 @@ measure: total_time_available__hours_per_day_ {
     sql: ${TABLE}.Utilization_Avg__hours_per_day_ ;;
   }
 
+
+
   dimension: utilization_sd__hours_per_day_ {
     type: number
     sql: ${TABLE}.Utilization_SD__hours_per_day_ ;;
@@ -675,5 +648,110 @@ measure: total_time_available__hours_per_day_ {
     sql: ${TABLE}.avg_basket_in_store ;;
    value_format_name: decimal_0
     drill_fields: [store,store___lane,total_transaction_size_avg__number_of_items_All_Store,total_transaction_size_avg__number_of_items_]
+  }
+
+  measure:  total_transaction_time_avg__sec_all_store  {
+    type: average
+    sql: ${TABLE}.avg_transaction_in_Store_Sec;;
+    value_format_name: decimal_0
+    hidden: no
+    drill_fields:[detail_Tranavg*]
+    link: {
+      label: "Explore Top 20 Store Lanes"
+      url: "{{ link }}&limit=20"}
+
+}
+
+  measure: total_transaction_time_avg__sec {
+    type: average
+    sql: ${transaction_time_avg__sec_} ;;
+    value_format_name: decimal_0
+    hidden: no
+    drill_fields:[detail_Tranavg*]
+    link: {
+      label: "Explore Top 20 Store Lanes"
+      url: "{{ link }}&limit=20"
+    }
+}
+ measure: avg_complete_transaction_count_per_Day{
+  sql:${avg_complete_transaction_count}/7 ;;
+  value_format_name: decimal_0
+ }
+
+
+
+#Avilability
+  measure:  total_transaction_Availability  {
+    sql:  "80 %";;
+    value_format_name: percent_0
+    hidden: no
+    link: {
+      label: "Productivity Explore"
+      url: "https://ncrpilot.eu.looker.com/dashboards-next/139"}
+    drill_fields: [store,store___lane,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target]
+  }
+
+  measure: total_time_available__hours_per_day_ {
+    type:average
+    sql: ${time_available__hours_per_day_} ;;
+    value_format_name: decimal_0
+    drill_fields: [store,store___lane,date_week_date,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target,total_utilization_avg__hours_per_day_]
+  }
+
+  measure: total_time_available__hours_per_day_Target {
+    type:average
+    sql: round(${time_available__hours_per_day_}/0.8) ;;
+    value_format_name: decimal_0
+    drill_fields: [store,store___lane,date_week_date,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target,total_utilization_avg__hours_per_day_]
+  }
+
+  measure: total_utilization_avg__hours_per_day_ {
+    type: average
+    sql: ${utilization_avg__hours_per_day_};;
+    value_format_name: decimal_0
+    drill_fields: [store,store___lane,date_week_date,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target,total_utilization_avg__hours_per_day_]
+
+  }
+
+  measure: total_utilization_avg__hours_per_day__Target {
+    sql: round(${total_utilization_avg__hours_per_day_}) ;;
+    value_format_name: decimal_0
+    drill_fields: [store,store___lane,date_week_date,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target,total_utilization_avg__hours_per_day_]
+  }
+
+  measure: total_utilization_avg__hours_per_day_Target_vs_Actual{
+    sql:  CONCAT(CAST(round(${total_utilization_avg__hours_per_day_}/nullif(${total_utilization_avg__hours_per_day__Target},0)*100) AS STRING)," %" ) ;;
+    value_format_name:percent_0
+    drill_fields: [store,store___lane,date_week_date,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target,total_utilization_avg__hours_per_day_]
+  }
+
+#Intervention
+
+  measure: Avg_transaction_with_security_or_non_security_assist_event{
+    type:average
+    sql: ${Transaction_With_Assist_With_or_WithOut_security_count};;
+    value_format_name: decimal_0
+    hidden: no
+    drill_fields: [detailAssis*]
+    link: {
+      label: "Explore Top 20 transaction with security or non security"
+      url: "{{ link }}&limit=20"
+    }
+  }
+  measure: avg_complete_transaction_count{
+    type:average
+    sql: ${complete_transaction_count};;
+    value_format_name: decimal_0
+    hidden: no
+    drill_fields:[detail_Tranavg*]
+  }
+
+
+  measure: Intervention_ScoreCard{
+    sql: CONCAT(CAST(round(${Avg_transaction_with_security_or_non_security_assist_event}/nullif(${avg_complete_transaction_count},0)* 100) AS STRING)," %" );;
+    value_format_name: percent_0
+    link: {
+      label: "Intervention Explore"
+      url: "https://ncrpilot.eu.looker.com/dashboards-next/140"}
   }
 }
