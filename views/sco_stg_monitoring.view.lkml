@@ -456,21 +456,7 @@ measure: total_time_available__hours_per_day_ {
     sql: ${TABLE}.Transaction_Size_Avg__Number_of_items_ ;;
   }
 
-  measure:  total_transaction_size_avg__number_of_items_  { type: average
-    sql: ${transaction_size_avg__number_of_items_} ;;
-    value_format_name: decimal_0
-    hidden: no}
 
-  measure:  total_transaction_size_avg__number_of_items_target  { type: average
-    sql: ${transaction_size_avg__number_of_items_}*1.1 ;;
-    value_format_name: decimal_0
-    hidden: no}
-
-  measure:  total_transaction_size_avg__number_of_items_targetvssource  {
-
-    sql: ${total_transaction_size_avg__number_of_items_}/${total_transaction_size_avg__number_of_items_target} ;;
-    value_format_name: "percent_0"
-    hidden: no}
 
   dimension: transaction_size_sd__number_of_items_ {
     type: number
@@ -499,6 +485,9 @@ measure: total_time_available__hours_per_day_ {
     fields: [store,store___lane,total_transaction_time_avg__sec,total_complete_transaction_count]
   }
 
+  set: detail_Productivity {
+    fields: [store,store___lane]
+  }
 
   dimension: transaction_time_sd__sec_ {
     type: number
@@ -660,5 +649,34 @@ measure: total_time_available__hours_per_day_ {
   measure: count {
     type: count
     drill_fields: [processor_name]
+  }
+
+
+  #Productivity
+  measure:  total_transaction_size_avg__number_of_items_  { type: average
+    sql: ${transaction_size_avg__number_of_items_} ;;
+    value_format_name: decimal_0
+    drill_fields: [store,store___lane,total_transaction_size_avg__number_of_items_All_Store,total_transaction_size_avg__number_of_items_]
+    hidden: no}
+
+  measure:  total_transaction_size_avg__number_of_items_target  { type: average
+    sql: ${transaction_size_avg__number_of_items_}*1.1 ;;
+    value_format_name: decimal_0
+    hidden: no}
+
+  measure:  total_transaction_size_avg__number_of_items_targetvssource  {
+
+    sql: ${total_transaction_size_avg__number_of_items_}/${total_transaction_size_avg__number_of_items_target} ;;
+    value_format_name: "percent_0"
+    hidden: no
+    link: {
+      label: "City Metrics Explore"
+      url: "https://ncrpilot.eu.looker.com/dashboards-next/138"}
+}
+  measure: total_transaction_size_avg__number_of_items_All_Store {
+    type: average
+    sql: ${TABLE}.avg_basket_in_store ;;
+   value_format_name: decimal_0
+    drill_fields: [store,store___lane,total_transaction_size_avg__number_of_items_All_Store,total_transaction_size_avg__number_of_items_]
   }
 }

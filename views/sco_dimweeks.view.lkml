@@ -19,8 +19,14 @@ view: sco_dimweeks {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.DateWeek ;;
+
   }
 
+dimension: Date {
+  type: date
+  sql: ${TABLE}.Date ;;
+
+}
 
   measure: count {
     type: count
