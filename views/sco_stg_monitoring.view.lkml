@@ -563,7 +563,7 @@ measure: total_time_available__hours_per_day_ {
     sql: ${complete_transaction_count};;
     value_format_name: decimal_0
     hidden: no
-    drill_fields: [store,store___lane,complete_transaction_count]
+    drill_fields: [store,store___lane]
   }
 
 
