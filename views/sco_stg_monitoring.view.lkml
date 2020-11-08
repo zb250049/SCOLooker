@@ -456,6 +456,22 @@ measure: total_time_available__hours_per_day_ {
     sql: ${TABLE}.Transaction_Size_Avg__Number_of_items_ ;;
   }
 
+  measure:  total_transaction_size_avg__number_of_items_  { type: average
+    sql: ${transaction_size_avg__number_of_items_} ;;
+    value_format_name: decimal_0
+    hidden: no}
+
+  measure:  total_transaction_size_avg__number_of_items_target  { type: average
+    sql: ${transaction_size_avg__number_of_items_}*1.1 ;;
+    value_format_name: decimal_0
+    hidden: no}
+
+  measure:  total_transaction_size_avg__number_of_items_targetvssource  {
+
+    sql: ${total_transaction_size_avg__number_of_items_}/${total_transaction_size_avg__number_of_items_target} ;;
+    value_format_name: "percent_0"
+    hidden: no}
+
   dimension: transaction_size_sd__number_of_items_ {
     type: number
     sql: ${TABLE}.Transaction_Size_SD__Number_of_items_ ;;
