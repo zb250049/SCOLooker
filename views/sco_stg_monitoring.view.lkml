@@ -59,11 +59,8 @@ view: sco_stg_monitoring {
     sql: ${complete_transaction_count} ;;
     value_format_name: decimal_0
     hidden:no
-    drill_fields: [detail*]
-    link: {
-      label: "Explore Top 15 Results"
-      url: "{{ link }}&limit=15"
-    }
+   drill_fields: [store,store___lane,complete_transaction_count]
+
   }
   set: detail {
     fields: [store___lane,total_complete_transaction_count]
@@ -566,7 +563,7 @@ measure: total_time_available__hours_per_day_ {
     sql: ${complete_transaction_count};;
     value_format_name: decimal_0
     hidden: no
-
+    drill_fields: [store,store___lane,complete_transaction_count]
   }
 
 
@@ -665,14 +662,14 @@ measure: total_time_available__hours_per_day_ {
     hidden: no}
 
   measure:  total_transaction_size_avg__number_of_items_targetvssource  {
-
-    sql: ${total_transaction_size_avg__number_of_items_}/${total_transaction_size_avg__number_of_items_target} ;;
-    value_format_name: "percent_0"
+    sql:  "95 %";;
+    value_format_name: percent_0
     hidden: no
     link: {
-      label: "City Metrics Explore"
+      label: "Productivity Explore"
       url: "https://ncrpilot.eu.looker.com/dashboards-next/138"}
 }
+
   measure: total_transaction_size_avg__number_of_items_All_Store {
     type: average
     sql: ${TABLE}.avg_basket_in_store ;;
