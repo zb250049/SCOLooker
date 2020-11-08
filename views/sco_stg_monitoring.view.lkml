@@ -623,7 +623,9 @@ measure: total_itemization_time_per_item__sec_  {
 
 
   #Productivity
-  measure:  total_transaction_size_avg__number_of_items_  { type: average
+  measure:  total_transaction_size_avg__number_of_items_  {
+    label: "Avg Number of Items SCO"
+    type: average
     sql: ${transaction_size_avg__number_of_items_} ;;
     value_format_name: decimal_0
     drill_fields: [store,store___lane,total_transaction_size_avg__number_of_items_All_Store,total_transaction_size_avg__number_of_items_]
@@ -644,6 +646,7 @@ measure: total_itemization_time_per_item__sec_  {
 }
 
   measure: total_transaction_size_avg__number_of_items_All_Store {
+   label:  "Avg Number of Items All Lanes"
     type: average
     sql: ${TABLE}.avg_basket_in_store ;;
    value_format_name: decimal_0
@@ -686,7 +689,7 @@ measure: total_itemization_time_per_item__sec_  {
     value_format_name: percent_0
     hidden: no
     link: {
-      label: "Productivity Explore"
+      label: "Availability Explore"
       url: "https://ncrpilot.eu.looker.com/dashboards-next/139"}
     drill_fields: [store,store___lane,total_time_available__hours_per_day_,total_time_available__hours_per_day_Target]
   }
