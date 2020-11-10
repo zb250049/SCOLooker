@@ -172,4 +172,42 @@ view: sco_fact_performance {
   set: detailPerformance {
     fields: [store,lane,date_date,time,processor_type]
     }
+
+  dimension: Memory_Usage  {
+    type: number
+    sql: ${TABLE}.Memory_Usage  ;;
+
+  }
+  measure: AVG_Memory_Usage {
+    type: average
+    sql: ${Memory_Usage} ;;
+    value_format_name: decimal_0
+    drill_fields: [store,lane,time,Memory_Usage,cpu_total,Decice_Error_Group_Code,ErrorCode]
+  }
+
+
+  dimension: Decice_Error_Group_Code  {
+    type: string
+    sql: ${TABLE}.Decice_Error_Group_Code  ;;
+  }
+
+  dimension: ErrorCode  {
+    type: number
+    sql: ${TABLE}.Error_Code  ;;
+  }
+
+  dimension: ErrorCount  {
+    label: "Error Count"
+    type: number
+    sql: ${TABLE}.ErrorCount  ;;
+  }
+  measure: Total_ErrorCount {
+    label: "Total Error Count"
+    type: sum
+    sql: ${ErrorCount} ;;
+    value_format_name: decimal_0
+  }
+  set: detail_Error {
+    fields: [store,lane,time,date_date,cpu_mc_afee_avg,cpu_scotapp_avg,cpu_total_avg]
+  }
 }

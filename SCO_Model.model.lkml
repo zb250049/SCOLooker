@@ -70,4 +70,10 @@ explore: sco_fact_performance{
     relationship: many_to_one
     sql_on: ${sco_dim_assistence.assistence_code} = ${sco_fact_performance.assistence_Code} ;;
   }
+  join: sco_error{
+    relationship: many_to_one
+    sql_on: ${sco_error.error_code} = ${sco_fact_performance.ErrorCode} ;;
+  }
+
+
 }
