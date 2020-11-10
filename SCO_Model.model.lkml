@@ -27,7 +27,10 @@ explore: sco_stg_monitoring {
     sql_on: ${sco_dim_store.store} = ${sco_stg_monitoring.store} ;;
   }
 
-
+  join: active_lanes {
+    relationship: many_to_many
+    sql_on: 1=1 ;;
+  }
 }
 
 explore: sco_state {

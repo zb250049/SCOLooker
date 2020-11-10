@@ -762,4 +762,15 @@ measure: total_itemization_time_per_item__sec_  {
       label: "Intervention Explore"
       url: "https://ncrpilot.eu.looker.com/dashboards-next/140"}
   }
+
+  measure: navigategotoErrorCode{
+    sql: "System Health ";;
+    link: {
+      label: "Error Explore"
+      url: "https://ncrpilot.eu.looker.com/dashboards-next/134"}
+    link: {
+      label: "Hardware Explore"
+      url: "https://ncrpilot.eu.looker.com/dashboards-next/132"}
+  }
+
 }
