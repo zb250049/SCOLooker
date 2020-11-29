@@ -15,6 +15,32 @@ view: sco_dim_store {
     }
   }
 
+  dimension: latitude {
+    type:number
+    sql: ${TABLE}.Altitude ;;
+
+
+  }
+
+dimension: longtitude {
+  type:number
+  sql: ${TABLE}.longtitude ;;
+
+
+}
+
+
+  dimension: Geo {
+    type: location
+    sql_latitude: ${latitude} ;;
+    sql_longitude:${longtitude} ;;
+   drill_fields:[sco_stg_monitoring.detail_TranAkFailedVsComleted*]
+    link: {
+      label: "Explore Top 20 Store Lanes"
+      url: "{{ link }}&limit=20"
+    }
+  }
+
   dimension: store {
     type: string
     sql: ${TABLE}.Store ;;
