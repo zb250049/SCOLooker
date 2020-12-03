@@ -764,7 +764,7 @@ measure: total_itemization_time_per_item__sec_  {
   }
 
   measure: navigategotoErrorCode{
-    sql: "System Health ";;
+    sql: concat("System","\nHealth");;
     link: {
       label: "Error Explore"
       url: "https://ncrpilot.eu.looker.com/dashboards-next/134"}
