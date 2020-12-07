@@ -68,7 +68,7 @@ view: sco_fact_performance {
     sql: ${TABLE}.CPU_Total ;;
   }
 
-  measure: cpu_total_avg {
+  measure: cpu_avg {
     type:average
     sql: ${cpu_total} ;;
     value_format_name: decimal_1
@@ -208,6 +208,6 @@ view: sco_fact_performance {
     value_format_name: decimal_0
   }
   set: detail_Error {
-    fields: [store,lane,time,date_date,cpu_mc_afee_avg,cpu_scotapp_avg,cpu_total_avg]
+    fields: [store,lane,time,date_date,cpu_mc_afee_avg,cpu_scotapp_avg,cpu_avg]
   }
 }
