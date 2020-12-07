@@ -640,7 +640,7 @@ measure: total_itemization_time_per_item__sec_  {
 
   measure:  total_transaction_size_avg__number_of_items_targetvssource  {
     label: "Avg Qty of Items Per Sco Actual vs Targe "
-    sql:  "95 %";;
+    sql:  "Productivity 95 %";;
     value_format_name: percent_0
     hidden: no
     link: {
@@ -690,7 +690,7 @@ measure: total_itemization_time_per_item__sec_  {
 
 #Avilability
   measure:  total_transaction_Availability  {
-    sql:  "80 %";;
+    sql:  "Availability 80 %";;
     value_format_name: percent_0
     hidden: no
     link: {
@@ -756,7 +756,7 @@ measure: total_itemization_time_per_item__sec_  {
 
 
   measure: Intervention_ScoreCard{
-    sql: CONCAT(CAST(round(${Avg_transaction_with_security_or_non_security_assist_event}/nullif(${avg_complete_transaction_count},0)* 100) AS STRING)," %" );;
+    sql: CONCAT("Intervention \n",CAST(round(${Avg_transaction_with_security_or_non_security_assist_event}/nullif(${avg_complete_transaction_count},0)* 100) AS STRING)," %" );;
     value_format_name: percent_0
     link: {
       label: "Intervention Explore"
