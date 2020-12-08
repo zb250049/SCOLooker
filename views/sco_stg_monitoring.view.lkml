@@ -640,7 +640,7 @@ measure: total_itemization_time_per_item__sec_  {
 
   measure:  total_transaction_size_avg__number_of_items_targetvssource  {
     label: "Avg Qty of Items Per Sco Actual vs Targe "
-    sql:  "Productivity 95 %";;
+    sql:  "Productivity 75 %";;
     value_format_name: percent_0
     hidden: no
     link: {
